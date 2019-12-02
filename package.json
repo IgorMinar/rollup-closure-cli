@@ -5,10 +5,11 @@
     "build": "ng build --prod",
     "e2e": "ng e2e --prod",
     "test": "yarn e2e && yarn build && node check-output-for-ngdevmode.js",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
-    "report": "du -ach --max-depth=1 dist-cli/*.js && du -ach --max-depth=1 dist-rollup-terser/*.js",
+    "ngcc": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "report": "du -acb --max-depth=1 dist-cli/*.js && du -acb --max-depth=1 dist-rollup-terser/*.js && du -acb --max-depth=1 dist-rollup-closure/*.js",
     "rollup-ngc": "ngc -p tsconfig.app.rollup.json",
-    "rollup-terser": "rollup -c rollup.config.js"
+    "rollup-terser": "rollup -c rollup-terser.config.js",
+    "rollup-closure": "rollup -c rollup-closure.config.js"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +26,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "@ampproject/rollup-plugin-closure-compiler": "^0.13.0",
     "@angular-devkit/build-angular": "0.900.0-rc.4",
     "@angular/cli": "9.0.0-rc.4",
     "@angular/compiler-cli": "9.0.0-rc.4",
