@@ -8,10 +8,11 @@ const closureConfig = {
   // Angular code contains a lot of non-standard JSDoc tags, like @publicApi.
   // These warnings won't appear anyway unless you set warning_level to verbose.
   jscomp_off: ['nonStandardJsDocs'],
+
+  // Uncomment to attempt advanced optimizations.
+  // compilation_level: 'ADVANCED',
   // Angular uses 'System', which needs an extern in advanced mode.
   externs: ['./externs.js'],
-  // Set to ADVANCED to attempt more optimizations.
-  compilation_level: 'SIMPLE',
 }
 
 
@@ -24,7 +25,7 @@ export default {
   },
   treeshake: true,
   plugins: [
-    nodeResolve(),
+    nodeResolve({ mainFields: ['es2015', 'browser', 'module', 'main'] }),
     buildOptimizer({
       sideEffectFreeModules: [
         `node_modules/@angular/core/`,

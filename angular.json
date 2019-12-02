@@ -111,8 +111,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cli-hello-world-lazy:serve",
-            "webdriverUpdate": false
+            "devServerTarget": "cli-hello-world-lazy:serve"
           },
           "configurations": {
             "production": {

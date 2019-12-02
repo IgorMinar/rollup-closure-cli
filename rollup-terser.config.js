@@ -1,6 +1,7 @@
 import nodeResolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import buildOptimizer from '@angular-devkit/build-optimizer/src/build-optimizer/rollup-plugin.js';
+import { GLOBAL_DEFS_FOR_TERSER, GLOBAL_DEFS_FOR_TERSER_WITH_AOT } from '@angular/compiler-cli';
 
 const cliUglifyConfig = {
   safari10: true,
@@ -13,7 +14,8 @@ const cliUglifyConfig = {
     pure_getters: true,
     passes: 3,
     global_defs: {
-      ngDevMode: false,
+      ...GLOBAL_DEFS_FOR_TERSER,
+      ...GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
     },
   },
 }
@@ -27,7 +29,7 @@ export default {
   },
   treeshake: true,
   plugins: [
-    nodeResolve(),
+    nodeResolve({ mainFields: ['es2015', 'browser', 'module', 'main'] }),
     buildOptimizer({
       sideEffectFreeModules: [
         `node_modules/@angular/core/`,
