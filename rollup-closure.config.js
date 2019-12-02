@@ -3,6 +3,7 @@ import buildOptimizer from '@angular-devkit/build-optimizer/src/build-optimizer/
 import compiler from '@ampproject/rollup-plugin-closure-compiler';
 
 const closureConfig = {
+  charset: 'UTF-8',
   // Uncomment to se more information.
   // warning_level: 'VERBOSE',
   // Angular code contains a lot of non-standard JSDoc tags, like @publicApi.

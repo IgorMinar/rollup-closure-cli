@@ -1,5 +1,7 @@
-# CliHelloWorldLazy
+# rollup-closure-cli
 
-This test checks bundle sizes when there is a lazy module. It also checks if the `ngDevMode` global variable and string references in `packages/core/src/util/ng_dev_mode.ts` are correctly removed.
+Some experiments comparing setups using Angular CLI, Rollup with Terser, and Rollup with Closure.
 
-This test contains a lazy route to ensure `ngDevMode` removal happens even across chunks, and a payload size check in `../_payload-limits.json` to ensure extra code is not retained accidentally.
+The Rollup with Closure currently suffers from (at least) these issues:
+  - `Console` and `Location` class/let definitions cause `JSC_BLOCK_SCOPED_DECL_MULTIPLY_DECLARED_ERROR` error (https://github.com/ampproject/rollup-plugin-closure-compiler/issues/92, workaround via `node patch-bo-to-make-var-iife.js`)
+  - UTF-8 exports are bugged https://github.com/ampproject/rollup-plugin-closure-compiler/issues/240

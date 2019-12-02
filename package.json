@@ -10,6 +10,7 @@
     "cli": "ng build --prod",
     "rollup-ngc": "ngc -p tsconfig.app.rollup.json",
     "rollup-terser": "rollup -c rollup-terser.config.js",
+    "pre-rollup-closure": "node patch-bo-to-make-var-iife.js",
     "rollup-closure": "rollup -c rollup-closure.config.js",
     "//e2e-scripts": "",
     "e2e": "ng e2e --devServerTarget",
