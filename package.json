@@ -5,7 +5,10 @@
     "build": "ng build --prod",
     "e2e": "ng e2e --prod",
     "test": "yarn e2e && yarn build && node check-output-for-ngdevmode.js",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "report": "du -ach --max-depth=1 dist-cli/*.js && du -ach --max-depth=1 dist-rollup-terser/*.js",
+    "rollup-ngc": "ngc -p tsconfig.app.rollup.json",
+    "rollup-terser": "rollup -c rollup.config.js"
   },
   "private": true,
   "dependencies": {
@@ -26,9 +29,9 @@
     "@angular/cli": "9.0.0-rc.4",
     "@angular/compiler-cli": "9.0.0-rc.4",
     "@angular/language-service": "9.0.0-rc.4",
-    "@types/node": "~10.14.0",
     "@types/jasmine": "~3.4.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~10.14.0",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -38,6 +41,9 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.2",
+    "rollup": "^1.27.8",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.6.4"
