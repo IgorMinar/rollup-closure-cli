@@ -10,7 +10,7 @@
     "cli": "ng build --prod",
     "rollup-ngc": "ngc -p tsconfig.app.rollup.json",
     "rollup-terser": "rollup -c rollup-terser.config.js",
-    "pre-rollup-closure": "node patch-bo-to-make-var-iife.js",
+    "prerollup-closure": "node patch-bo-to-make-var-iife.js",
     "rollup-closure": "rollup -c rollup-closure.config.js",
     "//e2e-scripts": "",
     "e2e": "ng e2e --devServerTarget",
@@ -34,7 +34,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@ampproject/rollup-plugin-closure-compiler": "^0.13.0",
+    "@ampproject/rollup-plugin-closure-compiler": "^0.18.1",
     "@angular-devkit/build-angular": "0.900.0-rc.4",
     "@angular/cli": "9.0.0-rc.4",
     "@angular/compiler-cli": "9.0.0-rc.4",
