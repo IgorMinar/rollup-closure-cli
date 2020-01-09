@@ -1,11 +1,14 @@
 import nodeResolve from 'rollup-plugin-node-resolve';
 import buildOptimizer from '@angular-devkit/build-optimizer/src/build-optimizer/rollup-plugin.js';
 import compiler from '@ampproject/rollup-plugin-closure-compiler';
+import { terser } from 'rollup-plugin-terser';
+import { GLOBAL_DEFS_FOR_TERSER, GLOBAL_DEFS_FOR_TERSER_WITH_AOT } from '@angular/compiler-cli';
 
 const closureConfig = {
   charset: 'UTF-8',
   // Uncomment to se more information.
   // warning_level: 'VERBOSE',
+  // language_out: 'ECMASCRIPT_2015',
   // Angular code contains a lot of non-standard JSDoc tags, like @publicApi.
   // These warnings won't appear anyway unless you set warning_level to verbose.
   jscomp_off: ['nonStandardJsDocs'],
@@ -14,6 +17,18 @@ const closureConfig = {
   // compilation_level: 'ADVANCED',
   // Angular uses 'System', which needs an extern in advanced mode.
   externs: ['./externs.js'],
+};
+
+// Use terser only to add the global defines.
+const globalDefUglifyConfig = {
+  mangle: false,
+  compress: {
+    defaults: false,
+    global_defs: {
+      ...GLOBAL_DEFS_FOR_TERSER,
+      ...GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
+    },
+  },
 }
 
 
@@ -37,6 +52,7 @@ export default {
         `node_modules/rxjs/`,
       ]
     }),
+    terser(cliUglifyConfig),
     compiler(closureConfig)
   ]
 };
