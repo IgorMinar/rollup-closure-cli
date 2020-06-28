@@ -57,6 +57,11 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "rollup": {
+              "outputPath": "dist-cli-rollup",
+              "experimentalRollupPass": true,
+              "commonChunk": false
             }
           }
         },

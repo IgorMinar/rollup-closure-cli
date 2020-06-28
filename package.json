@@ -2,12 +2,13 @@
   "name": "cli-hello-world-lazy",
   "version": "0.0.0",
   "scripts": {
-    "report": "du -acb --max-depth=1 dist-cli/*.js && du -acb --max-depth=1 dist-rollup-terser/*.js && du -acb --max-depth=1 dist-rollup-closure/*.js",
+    "report": "du -acb --max-depth=1 dist-cli/*.js && du -acb --max-depth=1 dist-cli-rollup/*.js && du -acb --max-depth=1 dist-rollup-terser/*.js && du -acb --max-depth=1 dist-rollup-closure/*.js",
     "test-ngdevmode": "node check-output-for-ngdevmode.js",
     "postinstall": "ngcc --properties es2015 browser module main --first-only",
     "//build-scripts": "",
     "clean": "yarn rimraf dist*/*.js dist*/*.js.map",
     "cli": "ng build --prod",
+    "cli-rollup": "ng build --configuration=production,rollup",
     "rollup-ngc": "ngc -p tsconfig.app.rollup.json",
     "rollup-terser": "rollup -c rollup-terser.config.js",
     "prerollup-closure": "node patch-bo-to-make-var-iife.js",
@@ -16,6 +17,7 @@
     "e2e": "ng e2e --devServerTarget",
     "serve": "serve --single --listen 4200",
     "e2e-cli": "run-p -r \"serve ./dist-cli\" e2e",
+    "e2e-cli-rollup": "run-p -r \"serve ./dist-cli-rollup\" e2e",
     "e2e-rollup-terser": "run-p -r \"serve ./dist-rollup-terser\" e2e",
     "e2e-rollup-closure": "run-p -r \"serve ./dist-rollup-closure\" e2e",
     "full-closure": "yarn rollup-ngc && yarn rollup-closure && yarn e2e-rollup-closure"
