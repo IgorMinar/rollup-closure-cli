@@ -1,4 +1,4 @@
-import nodeResolve from 'rollup-plugin-node-resolve';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import buildOptimizer from '@angular-devkit/build-optimizer/src/build-optimizer/rollup-plugin.js';
 import compiler from '@ampproject/rollup-plugin-closure-compiler';
 import { terser } from 'rollup-plugin-terser';
@@ -39,6 +39,7 @@ export default {
     format: 'esm',
     sourcemap: true,
   },
+  preserveEntrySignatures: false,
   treeshake: true,
   plugins: [
     nodeResolve({ mainFields: ['es2015', 'browser', 'module', 'main'] }),
