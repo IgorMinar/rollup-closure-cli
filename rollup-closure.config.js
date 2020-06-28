@@ -52,7 +52,7 @@ export default {
         `node_modules/rxjs/`,
       ]
     }),
-    terser(cliUglifyConfig),
+    terser(globalDefUglifyConfig),
     compiler(closureConfig)
   ]
 };
