@@ -8,6 +8,7 @@
     "//build-scripts": "",
     "clean": "yarn rimraf dist*/*.js dist*/*.js.map",
     "cli": "ng build --prod",
+    "precli-rollup": "node patch-cli-to-use-rollup-closure.js",
     "cli-rollup": "ng build --configuration=production,rollup",
     "rollup-ngc": "ngc -p tsconfig.app.rollup.json",
     "rollup-terser": "rollup -c rollup-terser.config.js",
