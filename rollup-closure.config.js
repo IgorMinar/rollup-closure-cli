@@ -33,7 +33,7 @@ const globalDefUglifyConfig = {
 
 
 export default {
-  input: './out-tsc/app/src/main-rollup.js',
+  input: './out-tsc/app/main-rollup.js',
   output: {
     dir: './dist-rollup-closure/',
     format: 'esm',
